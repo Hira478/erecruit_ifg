@@ -9,10 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, #f0f4f7, #ffffff);
+            color: #333;
         }
 
         .top-bar {
@@ -33,22 +36,14 @@
             width: auto;
         }
 
-        .slideshow-container {
+        .background-container {
             position: relative;
             width: 100%;
             height: 92vh;
-            overflow: hidden;
-            margin-top: 50px;
-            /* Account for the top bar */
-        }
-
-        .slide {
-            display: none;
-            width: 100%;
-            height: 100%;
-            position: absolute;
+            background-image: url('./img/img_2.png');
             background-size: cover;
             background-position: center;
+            margin-top: 50px;
         }
 
         .caption {
@@ -60,50 +55,6 @@
             padding: 10px;
             border-radius: 5px;
             font-size: 35px;
-            font-family: 'Monstat', sans-serif;
-        }
-
-        .prev,
-        .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            border-radius: 5px;
-        }
-
-        .prev {
-            left: 10px;
-        }
-
-        .next {
-            right: 10px;
-        }
-
-        .dots {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .dot {
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            margin: 0 5px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .active {
-            background-color: white;
         }
 
         .job-listing {
@@ -112,45 +63,183 @@
 
         .search-bar {
             display: flex;
+            align-items: center;
             gap: 10px;
             margin-bottom: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
         }
 
-        .search-box {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
+        .search-box,
         .category,
-        .search-button {
-            padding: 10px;
-            border: 1px solid #ccc;
+        .company-category,
+        .sort-category {
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: #f8f8f8;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .sort-label {
+            font-size: 14px;
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .search-button {
+            padding: 12px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
         }
 
         .job-content {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-        }
-
-        .job-row {
-            display: flex;
-            gap: 20px;
+            gap: 30px;
         }
 
         .job-item {
             flex: 1;
             border: 1px solid #ddd;
             border-radius: 5px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
             background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .job-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .job-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #007BFF;
+        }
+
+        p,
+        ul,
+        ol {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .apply-button {
+            padding: 8px 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .apply-button:hover {
+            background-color: #28a745;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .search-box,
+            .category,
+            .company-category,
+            .sort-category,
+            .search-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .sort-label {
+                margin-bottom: 5px;
+            }
+
+            .job-item {
+                margin-bottom: 30px;
+            }
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .page-button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .page-button:hover {
+            background-color: #ddd;
+        }
+
+        .page-number {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        /* Optional: Style for when the "Next" or "Previous" button is disabled */
+        .disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f1f1f1;
+            margin-top: 20px;
         }
     </style>
+
 </head>
 
 <body>
@@ -160,111 +249,233 @@
         </div>
     </div>
 
-    <div class="slideshow-container">
-        <div class="slide" style="background-image: url('./img/img_1.png');">
-            <div class="caption">POWER TO PROGRESS</div>
-        </div>
-        <div class="slide" style="background-image: url('./img/img_2.png');">
-            <div class="caption">Selamat Datang di Informasi Publik IFG</div>
-        </div>
-        <div class="slide" style="background-image: url('./img/img_3.png');">
-            <div class="caption">IFG Labuan Bajo Marathon 2024</div>
-        </div>
-        <div class="slide" style="background-image: url('./img/img_4.png');">
-            <div class="caption">IFG Whistleblowing System</div>
-        </div>
-        <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-        <button class="next" onclick="plusSlides(1)">&#10095;</button>
-        <div class="dots">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
-        </div>
+    <div class="background-container">
+        <div class="caption">POWER TO PROGRESS</div>
     </div>
 
     <main class="job-listing">
         <div class="search-bar">
             <input type="text" placeholder="Search jobs..." class="search-box">
+
             <select class="category">
-                <option value="all">All Categories</option>
+                <option value="all">Job Category</option>
                 <option value="tech">Tech</option>
                 <option value="marketing">Marketing</option>
                 <option value="finance">Finance</option>
             </select>
+
+            <select class="company-category">
+                <option value="all">Company Category</option>
+                <option value="startups">Startups</option>
+                <option value="corporate">Corporate</option>
+                <option value="nonprofit">Non-Profit</option>
+            </select>
+
+            <span class="sort-label">Sort by</span>
+
+            <select class="sort-category">
+                <option value="title">Title</option>
+                <option value="location">Location</option>
+                <option value="period">Available Period</option>
+            </select>
+
             <button class="search-button">Search</button>
         </div>
 
+
         <div class="job-content">
-            <div class="job-row">
-                <div class="job-item">
-                    <h3>Kepala Departemen Analisis</h3>
-                    <p>TUGAS DAN TANGGUNG JAWAB</p>
-                    <ul>
-                        <li>Mengusulkan rancangan program kerja departemen untuk dapat terkonsolidasi di dalam usulan
-                            Divisi termasuk kajian
-                            perubahan faktor-faktor eksternal.</li>
-                        <li>Merencanakan dan merumuskan draft pedoman strategis terhadap pelaksanaan aktivitas
-                            Kebijakan, Kepatuhan & Manajemen.</li>
-                        <li>Mensupervisi pengukuran profil risiko korporasi pada grup perusahaan berdasarkan pendekatan
-                            dan perspektif manajemen.</li>
-                    </ul>
-                    <p>KUALIFIKASI</p>
-                    <ol>
-                        <li>Minimal S1</li>
-                        <li>Berpengalaman dalam bidang manajemen risiko terutama pada bidang bisnis manajemen..</li>
-                        <li>Minimal 3-4 tahun pengalaman kerja terkait di bidang Manajemen Risiko.</li>
-                    </ol>
+            <div class="job-item">
+                <div class="job-item-header">
+                    <h3><i class="fa fa-briefcase"></i> Kepala Departemen Analisis - <em>Permanent</em></h3>
+                    <a href="#apply" class="apply-button">Apply Job</a>
                 </div>
-                <div class="job-item">
-                    <h3>Marketing Specialist</h3>
-                    <p>Create and execute marketing campaigns.</p>
-                </div>
+                <p>TUGAS DAN TANGGUNG JAWAB</p>
+                <ul>
+                    <li>Mengusulkan rancangan program kerja departemen...</li>
+                </ul>
             </div>
-            <div class="job-row">
-                <div class="job-item">
-                    <h3>Financial Analyst</h3>
-                    <p>Analyze financial data and prepare reports.</p>
+
+            <div class="job-item">
+                <div class="job-item-header">
+                    <h3><i class="fa fa-briefcase"></i> Marketing Specialist</h3>
+                    <a href="#apply" class="apply-button">Apply Job</a>
                 </div>
-                <div class="job-item">
-                    <h3>UI/UX Designer</h3>
-                    <p>Design intuitive user interfaces.</p>
-                </div>
+                <p>Create and execute marketing campaigns.</p>
             </div>
         </div>
     </main>
+    <div class="pagination">
+        <button class="page-button prev">Previous</button>
+        <span class="page-number">Page 1</span>
+        <button class="page-button next">Next</button>
+    </div>
 
+    <footer>
+        <p>&copy; 2024 IFG. All rights reserved.</p>
+    </footer>
     <script>
-        let slideIndex = 0;
-        autoSlides();
-
-        function autoSlides() {
-            let i;
-            const slides = document.getElementsByClassName("slide");
-            const dots = document.getElementsByClassName("dot");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+        // Sample job data with tasks for each job
+        const jobs = [
+            {
+                title: "Software Developer",
+                company: "Company A",
+                location: "New York",
+                tasks: ["Develop software solutions", "Collaborate with teams", "Write clean, scalable code"]
+            },
+            {
+                title: "Marketing Specialist",
+                company: "Company B",
+                location: "Los Angeles",
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"]
+            },
+            {
+                title: "Product Manager",
+                company: "Company C",
+                location: "San Francisco",
+                tasks: ["Define product vision", "Work with engineering team", "Lead product development"]
+            },
+            {
+                title: "Data Scientist",
+                company: "Company D",
+                location: "Chicago",
+                tasks: ["Analyze data", "Create data models", "Present insights to stakeholders"]
+            },
+            {
+                title: "UX Designer",
+                company: "Company E",
+                location: "Austin",
+                tasks: ["Design user-friendly interfaces", "Conduct user research", "Collaborate with developers"]
+            },
+            {
+                title: "HR Specialist",
+                company: "Company F",
+                location: "Houston",
+                tasks: ["Recruit talent", "Manage employee relations", "Conduct training sessions"]
+            },
+            {
+                title: "Web Developer",
+                company: "Company G",
+                location: "Seattle",
+                tasks: ["Develop website front-end", "Ensure cross-browser compatibility", "Collaborate with UX designers"]
+            },
+            {
+                title: "Business Analyst",
+                company: "Company H",
+                location: "Boston",
+                tasks: ["Analyze business requirements", "Create reports", "Work with stakeholders to optimize processes"]
+            },
+            {
+                title: "Sales Executive",
+                company: "Company I",
+                location: "Miami",
+                tasks: ["Generate sales leads", "Build relationships with clients", "Negotiate contracts"]
+            },
+            {
+                title: "Content Writer",
+                company: "Company J",
+                location: "Dallas",
+                tasks: ["Write blog posts", "Edit articles", "Research content topics"]
             }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
+            // Add more job data as needed
+        ];
+
+        let currentPage = 1;
+        const jobsPerPage = 5;
+
+        function displayJobs() {
+                const jobContent = document.querySelector('.job-content');
+                const paginationInfo = document.querySelector('.page-number');
+                const prevButton = document.querySelector('.prev');
+                const nextButton = document.querySelector('.next');
+
+                // Calculate the range of jobs to display
+                const startIndex = (currentPage - 1) * jobsPerPage;
+                const endIndex = startIndex + jobsPerPage;
+                const jobsToDisplay = jobs.slice(startIndex, endIndex);
+
+                // Clear previous job listings
+                jobContent.innerHTML = '';
+
+                // Display jobs
+                jobsToDisplay.forEach(job => {
+                    const jobItem = document.createElement('div');
+                    jobItem.classList.add('job-item');
+
+                    // Create the header container for title and apply button
+                    const header = document.createElement('div');
+                    header.classList.add('job-header');
+                    header.style.display = 'flex'; // Make it a flex container
+                    header.style.justifyContent = 'space-between'; // Space between title and button
+                    header.style.alignItems = 'center'; // Vertically align title and button
+
+                    // Add job title
+                    const jobTitle = document.createElement('h3');
+                    jobTitle.textContent = job.title;
+
+                    // Add apply button
+                    const applyButton = document.createElement('a');
+                    applyButton.href = "#apply";
+                    applyButton.classList.add('apply-button');
+                    applyButton.textContent = "Apply Job";
+
+                    // Append job title and button to the header
+                    header.appendChild(jobTitle);
+                    header.appendChild(applyButton);
+
+                    // Add job details (company, location)
+                    const company = document.createElement('p');
+                    company.innerHTML = `<strong>Company:</strong> ${job.company}`;
+
+                    const location = document.createElement('p');
+                    location.innerHTML = `<strong>Location:</strong> ${job.location}`;
+
+                    // Add bullet points for job tasks
+                    const taskList = document.createElement('ul');
+                    job.tasks.forEach(task => {
+                        const taskItem = document.createElement('li');
+                        taskItem.textContent = task;
+                        taskList.appendChild(taskItem);
+                    });
+
+                    // Add all elements to the job item
+                    jobItem.appendChild(header); // Job title and apply button
+                    jobItem.appendChild(company);
+                    jobItem.appendChild(location);
+                    jobItem.appendChild(taskList);
+
+                    // Append job item to the job content container
+                    jobContent.appendChild(jobItem);
+                });
+
+                // Update pagination info
+                paginationInfo.textContent = `Page ${currentPage}`;
+
+                // Disable buttons based on page number
+                prevButton.classList.toggle('disabled', currentPage === 1);
+                nextButton.classList.toggle('disabled', currentPage * jobsPerPage >= jobs.length);
             }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-            setTimeout(autoSlides, 8000); // Change slide every 8 seconds
-        }
 
-        function plusSlides(n) {
-            slideIndex += n - 1;
-            autoSlides();
-        }
 
-        function currentSlide(n) {
-            slideIndex = n - 1;
-            autoSlides();
-        }
+        // Handle pagination button clicks
+        document.querySelector('.prev').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayJobs();
+            }
+        });
+
+        document.querySelector('.next').addEventListener('click', () => {
+            if (currentPage * jobsPerPage < jobs.length) {
+                currentPage++;
+                displayJobs();
+            }
+        });
+
+        // Initialize job display
+        displayJobs();
     </script>
+
+
 </body>
 
 </html>
