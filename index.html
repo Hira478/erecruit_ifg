@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listing Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .top-bar {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 50px;
+            /* Account for the top bar */
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin: 0 5px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: white;
+        }
+
+        .job-listing {
+            padding: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .category,
+        .search-button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+        }
+
+        .job-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .job-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .job-item {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="logo">
+            <img src="img/logo.png" alt="JobFinder Logo">
+        </div>
+    </div>
+
+    <div class="slideshow-container">
+        <div class="slide" style="background-image: url('/img/img_1.webp');">
+            <div class="caption">Welcome to JobFinder</div>
+        </div>
+        <div class="slide" style="background-image: url('/img/img_2.webp');">
+            <div class="caption">Find Your Dream Job</div>
+        </div>
+        <div class="slide" style="background-image: url('/img/img_3.webp');">
+            <div class="caption">Explore Opportunities</div>
+        </div>
+        <div class="slide" style="background-image: url('/img/img_4.webp');">
+            <div class="caption">Explore Opportunities</div>
+        </div>
+        <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+        <button class="next" onclick="plusSlides(1)">&#10095;</button>
+        <div class="dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </div>
+
+    <main class="job-listing">
+        <div class="search-bar">
+            <input type="text" placeholder="Search jobs..." class="search-box">
+            <select class="category">
+                <option value="all">All Categories</option>
+                <option value="tech">Tech</option>
+                <option value="marketing">Marketing</option>
+                <option value="finance">Finance</option>
+            </select>
+            <button class="search-button">Search</button>
+        </div>
+
+        <div class="job-content">
+            <div class="job-row">
+                <div class="job-item">
+                    <h3>Software Engineer</h3>
+                    <p>Develop and maintain web applications.</p>
+                </div>
+                <div class="job-item">
+                    <h3>Marketing Specialist</h3>
+                    <p>Create and execute marketing campaigns.</p>
+                </div>
+            </div>
+            <div class="job-row">
+                <div class="job-item">
+                    <h3>Financial Analyst</h3>
+                    <p>Analyze financial data and prepare reports.</p>
+                </div>
+                <div class="job-item">
+                    <h3>UI/UX Designer</h3>
+                    <p>Design intuitive user interfaces.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let slideIndex = 0;
+        autoSlides();
+
+        function autoSlides() {
+            let i;
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(autoSlides, 10000); // Change slide every 5 seconds
+        }
+
+        function plusSlides(n) {
+            slideIndex += n - 1;
+            autoSlides();
+        }
+
+        function currentSlide(n) {
+            slideIndex = n - 1;
+            autoSlides();
+        }
+    </script>
+</body>
+
+</html>
