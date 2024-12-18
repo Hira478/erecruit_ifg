@@ -297,71 +297,74 @@
         // Sample job data with tasks for each job
         const jobs = [
             {
-                title: "Kepala Departemen Analisis Risiko",
-                company: "Bahana Group",
-                location: "Jakarta",
-                tasks: ["Mengkoordinasikan dan mengusulkan rancangan program kerja departemen untuk dapat terkonsolidasi di dalam usulan Rencana Kerja dan Anggaran Perusahaan (RKAP) Divisi termasuk kajian perubahan faktor-faktor eksternal guna memastikan keselarasan program kerja antar unit fungsional."
-                    , "Mereviu dan mengusulkan draft kebijakan dan panduan terhadap pelaksanaan aktivitas Strategi SDM serta mengidentifikasi area perbaikan strategis untuk memastikan perbaikan kinerja yang berkesinambungan"
-                    , "Mengatur dan memastikan ketersediaan kebijakan dan strategi pengelolaan SDM di IFG, meliputi rekrutmen, remunerasi, pengembangan karyawan, manajemen kinerja, manajemen talenta, pengelolaan karir, employee value proposition, hubungan industrial, program pensiun dan pengakhiran hubungan kerja"
-                    , "Mengatur dan memonitor implementasi inisiatif strategi pengembangan manajemen SDM untuk jangka pendek dan jangka panjang dan menjustifikasi area perbaikan strategis untuk memastikan perbaikan kinerja yang berkesinambungan"
-                    , "Mereviu proses dan analisis pengembangan organisasi meliputi kajian struktur organisasi dan perencanaan kebutuhan karyawan yang selaras dengan kebutuhan Perusahaan"
-                    , "Mengkoordinasikan dan mengarahkan penyelarasan kebijakan dan strategi pengelolaan SDM Induk Perusahaan kepada Anak Perusahaan untuk memastikan sinergi strategi IFG secara keseluruhan"
-                    , "Menerapkan pembinaan dan pengawasan langsung terhadap karyawan-karyawan di dalam Departemen Strategi SDM termasuk kebutuhan pelatihan untuk menjaga efektivitas dan efisiensi karyawan dalam melakukan perannya."
-                    , "Mengatur dan memonitor risiko dan tata kelola di unit kerja Strategi SDM untuk memastikan risiko di unit dan tata kelola kerja telah sesuai dengan ketentuan dan peraturan yang berlaku."]
-            },
-            {
                 title: "Marketing Specialist",
                 company: "Company B",
                 location: "Los Angeles",
-                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"]
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"],
+                qualifications: ["Bachelor's degree in Marketing", "2+ years of experience", "Strong analytical skills"]
             },
             {
                 title: "Product Manager",
                 company: "Company C",
                 location: "San Francisco",
-                tasks: ["Define product vision", "Work with engineering team", "Lead product development"]
+                tasks: ["Define product vision", "Work with engineering team", "Lead product development"],
+                qualifications: ["Experience in product management", "Strong leadership skills", "Excellent communication"]
             },
             {
-                title: "Data Scientist",
-                company: "Company D",
-                location: "Chicago",
-                tasks: ["Analyze data", "Create data models", "Present insights to stakeholders"]
+                title: "Marketing Specialist",
+                company: "Company B",
+                location: "Los Angeles",
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"],
+                qualifications: ["Bachelor's degree in Marketing", "2+ years of experience", "Strong analytical skills"]
             },
             {
-                title: "UX Designer",
-                company: "Company E",
-                location: "Austin",
-                tasks: ["Design user-friendly interfaces", "Conduct user research", "Collaborate with developers"]
+                title: "Marketing Specialist",
+                company: "Company B",
+                location: "Los Angeles",
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"],
+                qualifications: ["Bachelor's degree in Marketing", "2+ years of experience", "Strong analytical skills"]
             },
             {
-                title: "HR Specialist",
-                company: "Company F",
-                location: "Houston",
-                tasks: ["Recruit talent", "Manage employee relations", "Conduct training sessions"]
+                title: "Marketing Specialist",
+                company: "Company B",
+                location: "Los Angeles",
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"],
+                qualifications: ["Bachelor's degree in Marketing", "2+ years of experience", "Strong analytical skills"]
             },
             {
-                title: "Web Developer",
-                company: "Company G",
-                location: "Seattle",
-                tasks: ["Develop website front-end", "Ensure cross-browser compatibility", "Collaborate with UX designers"]
+                title: "Marketing Specialist",
+                company: "Company B",
+                location: "Los Angeles",
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"],
+                qualifications: ["Bachelor's degree in Marketing", "2+ years of experience", "Strong analytical skills"]
             },
             {
-                title: "Business Analyst",
-                company: "Company H",
-                location: "Boston",
-                tasks: ["Define product vision", "Work with engineering team", "Lead product development"]
+                title: "Marketing Specialist",
+                company: "Company B",
+                location: "Los Angeles",
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"],
+                qualifications: ["Bachelor's degree in Marketing", "2+ years of experience", "Strong analytical skills"]
             },
             {
-                title: "Sales Executive",
-                company: "Company I",
-                location: "Miami",
-                tasks: ["Generate sales leads", "Build relationships with clients", "Negotiate contracts"]
+                title: "Marketing Specialist",
+                company: "Company B",
+                location: "Los Angeles",
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"],
+                qualifications: ["Bachelor's degree in Marketing", "2+ years of experience", "Strong analytical skills"]
             },
             {
-                title: "Content Writer",
-                company: "Company J",
-                location: "Dallas",
-                tasks: ["Write blog posts", "Edit articles", "Research content topics"]
+                title: "Marketing Specialist",
+                company: "Company B",
+                location: "Los Angeles",
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"],
+                qualifications: ["Bachelor's degree in Marketing", "2+ years of experience", "Strong analytical skills"]
+            },
+            {
+                title: "Marketing Specialist",
+                company: "Company B",
+                location: "Los Angeles",
+                tasks: ["Plan marketing campaigns", "Analyze market trends", "Collaborate with design team"],
+                qualifications: ["Bachelor's degree in Marketing", "2+ years of experience", "Strong analytical skills"]
             }
             // Add more job data as needed
         ];
@@ -424,11 +427,25 @@
                     taskList.appendChild(taskItem);
                 });
 
+                // Add bullet points for job qualifications
+                const qualificationHeading = document.createElement('p');
+                qualificationHeading.textContent = "Qualifications:";
+                qualificationHeading.style.fontWeight = "bold";
+
+                const qualificationList = document.createElement('ul');
+                job.qualifications.forEach(qualification => {
+                    const qualificationItem = document.createElement('li');
+                    qualificationItem.textContent = qualification;
+                    qualificationList.appendChild(qualificationItem);
+                });
+
                 // Add all elements to the job item
                 jobItem.appendChild(header); // Job title and apply button
                 jobItem.appendChild(company);
                 jobItem.appendChild(location);
-                jobItem.appendChild(taskList);
+                jobItem.appendChild(taskList); // Task list
+                jobItem.appendChild(qualificationHeading); // "Qualifications" label
+                jobItem.appendChild(qualificationList); // Qualification list
 
                 // Append job item to the job content container
                 jobContent.appendChild(jobItem);
@@ -441,6 +458,7 @@
             prevButton.classList.toggle('disabled', currentPage === 1);
             nextButton.classList.toggle('disabled', currentPage * jobsPerPage >= jobs.length);
         }
+
 
 
         // Handle pagination button clicks
