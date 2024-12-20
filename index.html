@@ -26,75 +26,57 @@
 
     <main class="job-listing">
         <div class="search-bar">
+            <!-- Search by job title, company, or location -->
             <input type="text" placeholder="Search jobs..." class="search-box">
 
+            <!-- Filter by job category -->
             <select class="category">
-                <option>All Job Category</option>
-                <optgroup label="Akutansi">
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>>
-                    <option>Lorem Ipsum</option>
+                <option value="all job category">All Job Categories</option>
+                <optgroup label="Accountant">
+                    <option value="accountant">Junior Accountant</option>
+                    <option value="accountant">Senior Accountant</option>
                 </optgroup>
-                <optgroup label="Sumber Daya Manusia">
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>>
-                    <option>Lorem Ipsum</option>
+                <optgroup label="Human Resources">
+                    <option value="hr">Recruitment Specialist</option>
+                    <option value="hr">HR Generalist</option>
                 </optgroup>
-                <optgroup label="Keuangan Perusahaan">
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>>
-                    <option>Lorem Ipsum</option>
+                <optgroup label="Finance">
+                    <option value="finance">Financial Analyst</option>
+                    <option value="finance">Corporate Treasurer</option>
                 </optgroup>
-                <optgroup label="Bisnis Capital Market dan Inventasi">
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>>
-                    <option>Lorem Ipsum</option>
+                <optgroup label="Technology">
+                    <option value="technology">Software Developer</option>
+                    <option value="technology">Data Scientist</option>
                 </optgroup>
-                <optgroup label="Teknologi Informasi">
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>>
-                    <option>Lorem Ipsum</option>
+                <optgroup label="Marketing">
+                    <option value="marketing">Marketing Specialist</option>
+                    <option value="marketing">Digital Strategist</option>
                 </optgroup>
-                <optgroup label="Aktuaria">
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>>
-                    <option>Lorem Ipsum</option>
-                </optgroup>
-                <optgroup label="Audit dan Manajemen Risiko">
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>>
-                    <option>Lorem Ipsum</option>
-                </optgroup>
-                <optgroup label="Bisnis Asuransi dan Pinjaman">
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>
-                </optgroup>
-                <optgroup label="Others">
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>
-                    <option>Lorem Ipsum</option>
+                <optgroup label="Other">
+                    <option value="others">Miscellaneous Roles</option>
                 </optgroup>
             </select>
 
+            <!-- Filter by company category -->
             <select class="company-category">
-                <option value="all">Company Category</option>
+                <option value="all">All Companies</option>
                 <option value="startups">Startups</option>
                 <option value="corporate">Corporate</option>
                 <option value="nonprofit">Non-Profit</option>
             </select>
 
-            <span class="sort-label">Sort by</span>
-
+            <!-- Sorting options -->
+            <span class="sort-label">Sort by:</span>
             <select class="sort-category">
                 <option value="title">Title</option>
                 <option value="location">Location</option>
                 <option value="period">Available Period</option>
             </select>
 
+            <!-- Trigger search -->
             <button class="search-button">Search</button>
         </div>
+
 
         <div class="job-content"></div>
     </main>
