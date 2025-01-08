@@ -14,7 +14,6 @@ fetch("jobs.json")
       if (currentPage > 1) {
         currentPage--;
         displayJobs(jobs);
-        scrollToTop();
       }
     });
 
@@ -27,7 +26,7 @@ fetch("jobs.json")
     });
 
     function scrollToTop() {
-      const targetPosition = 600; // Adjust this value for custom scroll position (in pixels)
+      const targetPosition = 580; // Adjust this value for custom scroll position (in pixels)
       window.scrollTo({
         top: targetPosition,
         behavior: "smooth",
