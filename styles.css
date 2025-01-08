@@ -113,6 +113,7 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative; /* Ensure proper positioning for the apply button */
   overflow: hidden; /* Prevent content overflow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .job-header {

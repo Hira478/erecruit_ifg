@@ -14,6 +14,7 @@ fetch("jobs.json")
       if (currentPage > 1) {
         currentPage--;
         displayJobs(jobs);
+        scrollToTop();
       }
     });
 
@@ -21,8 +22,17 @@ fetch("jobs.json")
       if (currentPage * jobsPerPage < jobs.length) {
         currentPage++;
         displayJobs(jobs);
+        scrollToTop();
       }
     });
+
+    function scrollToTop() {
+      const targetPosition = 600; // Adjust this value for custom scroll position (in pixels)
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
 
     // Handle search and filtering
     document.querySelector(".search-button").addEventListener("click", () => {
@@ -143,3 +153,7 @@ function displayJobs(jobsToDisplay) {
   // Update pagination info
   paginationInfo.textContent = `Page ${currentPage}`;
 }
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
