@@ -26,7 +26,7 @@ fetch("jobs.json")
     });
 
     function scrollToTop() {
-      const targetPosition = 580; // Adjust this value for custom scroll position (in pixels)
+      const targetPosition = 590; // Adjust this value for custom scroll position (in pixels)
       window.scrollTo({
         top: targetPosition,
         behavior: "smooth",
@@ -103,7 +103,7 @@ function displayJobs(jobsToDisplay) {
     header.style.justifyContent = "space-between";
     header.style.alignItems = "center";
 
-    const jobTitle = document.createElement("h3");
+    const jobTitle = document.createElement("h2");
     jobTitle.textContent = job.title;
 
     const applyButton = document.createElement("a");
@@ -120,31 +120,47 @@ function displayJobs(jobsToDisplay) {
     const location = document.createElement("p");
     location.innerHTML = `<strong>Location:</strong> ${job.location}`;
 
+    // Create a container for tasks and qualifications
+    const taskQualContainer = document.createElement("div");
+    taskQualContainer.classList.add("task-qual-container");
+
     // Add tasks
+    const tasksDiv = document.createElement("div");
+    tasksDiv.classList.add("tasks");
+    const taskHeader = document.createElement("p");
+    taskHeader.textContent = "Tugas & Tanggung Jawab:";
     const taskList = document.createElement("ul");
     job.tasks.forEach((task) => {
       const taskItem = document.createElement("li");
       taskItem.textContent = task;
       taskList.appendChild(taskItem);
     });
+    tasksDiv.appendChild(taskHeader);
+    tasksDiv.appendChild(taskList);
 
     // Add qualifications
-    const qualificationList = document.createElement("ul");
+    const qualificationsDiv = document.createElement("div");
+    qualificationsDiv.classList.add("qualifications");
     const qualificationHeader = document.createElement("p");
     qualificationHeader.textContent = "Qualifications:";
+    const qualificationList = document.createElement("ul");
     job.qualifications.forEach((qualification) => {
       const qualItem = document.createElement("li");
       qualItem.textContent = qualification;
       qualificationList.appendChild(qualItem);
     });
+    qualificationsDiv.appendChild(qualificationHeader);
+    qualificationsDiv.appendChild(qualificationList);
+
+    // Append tasks and qualifications to the container
+    taskQualContainer.appendChild(tasksDiv);
+    taskQualContainer.appendChild(qualificationsDiv);
 
     // Append elements to job item
     jobItem.appendChild(header);
     jobItem.appendChild(company);
     jobItem.appendChild(location);
-    jobItem.appendChild(taskList);
-    jobItem.appendChild(qualificationHeader);
-    jobItem.appendChild(qualificationList);
+    jobItem.appendChild(taskQualContainer);
 
     jobContent.appendChild(jobItem);
   });
